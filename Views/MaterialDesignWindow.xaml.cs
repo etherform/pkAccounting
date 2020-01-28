@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace pkAccounting
+namespace pkAccounting.Views
 {
     public static class MaterialDesignWindow
     {

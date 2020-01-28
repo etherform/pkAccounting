@@ -1,19 +1,16 @@
 ﻿using MaterialDesignThemes.Wpf;
-using pkAccounting.classes;
-using pkAccounting.window;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-
-namespace pkAccounting
+namespace pkAccounting.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Snackbar Snackbar;
+        public static Snackbar Snackbar { get; set; }
 
         public MainWindow() {
             MaterialDesignWindow.RegisterCommands(this);
@@ -27,8 +24,7 @@ namespace pkAccounting
                 MainSnackbar.MessageQueue.Enqueue("Welcome to Material Design In XAML Toolkit");
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
-            DataContext = new MainWindowViewModel(MainSnackbar.MessageQueue);
-
+            Snackbar = MainSnackbar;
         }
 
 

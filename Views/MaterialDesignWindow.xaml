@@ -3,8 +3,8 @@
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:command="http://www.galasoft.ch/mvvmlight"
-                    xmlns:window="clr-namespace:pkAccounting.window" 
-                    xmlns:views="clr-namespace:pkAccounting">
+                    xmlns:views="clr-namespace:pkAccounting.Views"
+                    xmlns:ext="clr-namespace:pkAccounting.Views.Extensions">
     <Style x:Key="MaterialDesignWindow" TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
         <Style.Resources>
             <ResourceDictionary>
@@ -65,8 +65,8 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <i:Interaction.Behaviors>
-                                    <window:DragWindowBehavior />
-                                    <window:TemplateBindingBehavior TargetTemplatePropertyPath="(WindowChrome.WindowChrome).(WindowChrome.CaptionHeight)" SourceProperty="ActualHeight"/>
+                                    <ext:DragWindowBehavior />
+                                    <ext:TemplateBindingBehavior TargetTemplatePropertyPath="(WindowChrome.WindowChrome).(WindowChrome.CaptionHeight)" SourceProperty="ActualHeight"/>
                                 </i:Interaction.Behaviors>
                                 <Grid>
                                     <ContentControl x:Name="HeaderContent" FontSize="22" Content="{Binding Path=(views:MaterialDesignWindow.HeaderContent), RelativeSource={RelativeSource TemplatedParent}}">
@@ -100,11 +100,11 @@
                                             </Style>
                                         </StackPanel.Resources>
                                         <Button Command="{x:Static views:MaterialDesignWindow.Minimize}"
-                                                Visibility="{Binding Path=(window:WindowEx.ShowMinimizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                Visibility="{Binding Path=(ext:WindowEx.ShowMinimizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <md:PackIcon Kind="WindowMinimize" />
                                         </Button>
                                         <Button Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}"
-                                                Visibility="{Binding Path=(window:WindowEx.ShowMaximizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                Visibility="{Binding Path=(ext:WindowEx.ShowMaximizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Button.Style>
                                                 <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                                                     <Setter Property="Content">

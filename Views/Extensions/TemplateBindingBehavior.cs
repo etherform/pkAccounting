@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Interactivity;
 
-namespace pkAccounting.window
+namespace pkAccounting.Views.Extensions
 {
     public class TemplateBindingBehavior : Behavior<DependencyObject>
     {

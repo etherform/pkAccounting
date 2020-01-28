@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace pkAccounting.window
+namespace pkAccounting.Views.Extensions
 {
     public static class BindingMixins
     {

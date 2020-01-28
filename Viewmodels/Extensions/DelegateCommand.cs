@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace pkAccounting.classes
+namespace pkAccounting.Viewmodels.Extensions
 {
     public class DelegateCommand : ICommand
     {

@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace pkAccounting.window
+namespace pkAccounting.Views.Extensions
 {
     public class DragWindowBehavior : Behavior<FrameworkElement>
     {

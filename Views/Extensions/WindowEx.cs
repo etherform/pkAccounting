@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace pkAccounting.window
+namespace pkAccounting.Views.Extensions
 {
     public static class WindowEx
     {

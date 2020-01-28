@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pkAccounting.classes.data
+namespace pkAccounting.Models
 {
     public class TTN
     {
