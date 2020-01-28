@@ -1,8 +1,11 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Prism.Events;
 
-namespace pkAccounting.Viewmodels
+namespace pkAccounting.ViewModels
 {
-    class GridViewModel : ViewModelBase
+    class GridViewModel : BaseViewModel
     {
+        protected GridViewModel(IEventAggregator ea) : base(ea)
+        {
+        }
     }
 }

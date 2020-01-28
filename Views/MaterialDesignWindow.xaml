@@ -1,10 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-                    xmlns:command="http://www.galasoft.ch/mvvmlight"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:views="clr-namespace:pkAccounting.Views"
-                    xmlns:ext="clr-namespace:pkAccounting.Views.Extensions">
+                    xmlns:ext="clr-namespace:pkAccounting.Views.Extensions"
+                    xmlns:prism="http://prismlibrary.com/">
     <Style x:Key="MaterialDesignWindow" TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
         <Style.Resources>
             <ResourceDictionary>
@@ -56,11 +56,11 @@
                                 Visibility="Collapsed"
                                 Grid.Row="1" />
 
-                            <md:ColorZone Padding="8" md:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" 
+                            <materialDesign:ColorZone Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" 
                                           Grid.Row="0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDoubleClick" >
-                                        <command:EventToCommand Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}" 
+                                        <prism:InvokeCommandAction Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}" 
                                                                 CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
@@ -99,24 +99,22 @@
                                                 <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
                                             </Style>
                                         </StackPanel.Resources>
-                                        <Button Command="{x:Static views:MaterialDesignWindow.Minimize}"
-                                                Visibility="{Binding Path=(ext:WindowEx.ShowMinimizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <md:PackIcon Kind="WindowMinimize" />
+                                        <Button Command="{x:Static views:MaterialDesignWindow.Minimize}">
+                                            <materialDesign:PackIcon Kind="WindowMinimize" />
                                         </Button>
-                                        <Button Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}"
-                                                Visibility="{Binding Path=(ext:WindowEx.ShowMaximizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Button Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}">
                                             <Button.Style>
                                                 <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                                                     <Setter Property="Content">
                                                         <Setter.Value>
-                                                            <md:PackIcon Kind="WindowMaximize" />
+                                                            <materialDesign:PackIcon Kind="WindowMaximize" />
                                                         </Setter.Value>
                                                     </Setter>
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Value="Maximized">
                                                             <Setter Property="Content">
                                                                 <Setter.Value>
-                                                                    <md:PackIcon Kind="WindowRestore" />
+                                                                    <materialDesign:PackIcon Kind="WindowRestore" />
                                                                 </Setter.Value>
                                                             </Setter>
                                                         </DataTrigger>
@@ -125,11 +123,11 @@
                                             </Button.Style>
                                         </Button>
                                         <Button Command="{x:Static views:MaterialDesignWindow.Close}">
-                                            <md:PackIcon Kind="WindowClose" />
+                                            <materialDesign:PackIcon Kind="WindowClose" />
                                         </Button>
                                     </StackPanel>
                                 </Grid>
-                            </md:ColorZone>
+                            </materialDesign:ColorZone>
                         </Grid>
                     </Border>
 

@@ -3,22 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:views="clr-namespace:pkAccounting.Views"
-        xmlns:items="clr-namespace:pkAccounting.Viewmodels.Items"
-        xmlns:ext="clr-namespace:pkAccounting.Views.Extensions"
-        ext:WindowEx.ShowMinimizeButton="True"
-        ext:WindowEx.ShowMaximizeButton="True"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Aliased"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{md:MaterialDesignFont}"
+        FontFamily="{materialDesign:MaterialDesignFont}"
         Style="{StaticResource MaterialDesignWindow}"
-        mc:Ignorable="d" Title="Коммерческий учет" Height="800" Width="1080" WindowStartupLocation="CenterScreen"
-        DataContext="{Binding Source={StaticResource Locator}, Path=MainWindow}">
+        mc:Ignorable="d" Title="{Binding Title}" Height="800" Width="1080" WindowStartupLocation="CenterScreen">
     <views:MaterialDesignWindow.HeaderContent>
         <Grid>
             <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" HorizontalAlignment="Left" WindowChrome.IsHitTestVisibleInChrome="True" 
@@ -28,70 +25,34 @@
 
     </views:MaterialDesignWindow.HeaderContent>
     <Window.Content>
-        <md:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
-            <md:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" >
-                <md:DrawerHost.LeftDrawerContent>
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+            <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" >
+                <materialDesign:DrawerHost.LeftDrawerContent>
                     <DockPanel Width="260">
                         <StackPanel>
                             <Expander HorizontalAlignment="Stretch" Header="Работа с контрагентами">
                                 <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="20,4,20,8">
-                                    <ListBox x:Name="MenuOneListBox" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding KontragentMenu}">
-                                        <ListBox.Resources>
-                                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
-                                        </ListBox.Resources>
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate DataType="items:MenuItem">
-                                                <TextBlock Text="{Binding Name}" />
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                    
                                 </StackPanel>
                             </Expander>
                             <Expander HorizontalAlignment="Stretch" Header="Движение товара">
                                 <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="20,4,20,8">
-                                    <ListBox x:Name="MenuTwoListBox" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding TovarMenu}">
-                                        <ListBox.Resources>
-                                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
-                                        </ListBox.Resources>
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate DataType="items:MenuItem">
-                                                <TextBlock Text="{Binding Name}" />
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                    
                                 </StackPanel>
                             </Expander>
                             <Expander HorizontalAlignment="Stretch" Header="Реализация">
                                 <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="20,4,20,8">
-                                    <ListBox x:Name="MenuThreeListBox" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding SalesMenu}">
-                                        <ListBox.Resources>
-                                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
-                                        </ListBox.Resources>
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate DataType="items:MenuItem">
-                                                <TextBlock Text="{Binding Name}" />
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                    
                                 </StackPanel>
                             </Expander>
                             <Expander HorizontalAlignment="Stretch" Header="Аналитика">
                                 <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="20,4,20,8">
-                                    <ListBox x:Name="MenuFourListBox" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding AnalyticsMenu}">
-                                        <ListBox.Resources>
-                                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
-                                        </ListBox.Resources>
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate DataType="items:MenuItem">
-                                                <TextBlock Text="{Binding Name}" />
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                    
                                 </StackPanel>
                             </Expander>
                         </StackPanel>
                     </DockPanel>
-                </md:DrawerHost.LeftDrawerContent>
+                </materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -101,11 +62,10 @@
 
                         <TextBlock Text="Меню возможностей:" />
 
-                        <md:Snackbar MessageQueue="{md:MessageQueue}" x:Name="MainSnackbar"
-                                            Grid.Row="1" />
+                        <materialDesign:Snackbar MessageQueue="{Binding SnackQueue}" x:Name="MainSnackbar" Grid.Row="1" HorizontalAlignment="Center" Width="Auto"/>
                     </Grid>
                 </DockPanel>
-            </md:DrawerHost>
-        </md:DialogHost>
+            </materialDesign:DrawerHost>
+        </materialDesign:DialogHost>
     </Window.Content>
 </Window>
